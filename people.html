@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "dark" && t !== "light") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <title>People — AI Governance Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Courier+Prime:400,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav id="top-nav">
+    <div class="nav-left">
+      <a id="logo" href="index.html">AI Governance Lab</a>
+      <a class="nav-link" href="index.html">home</a>
+      <a class="nav-link active" href="people.html">people</a>
+      <a class="nav-link" href="teaching.html">teaching</a>
+      <a class="nav-link" href="newsletter.html">substack</a>
+    </div>
+    <button class="theme-toggle" type="button">☾</button>
+  </nav>
+
+  <main>
+    <h1>People</h1>
+    <p class="tagline">The researchers and students behind the lab.</p>
+    <p class="placeholder">(All bios are placeholders. Dom will ask for a formal bio before sharing publicly.)</p>
+
+    <!--
+      To add a photo: put an image in assets/img/ and swap the empty
+      <div class="avatar"> for <div class="avatar"><img src="assets/img/name.jpg" alt="Name"></div>
+    -->
+
+    <h2>Faculty Director</h2>
+    <div class="people-grid">
+      <div class="person">
+        <div class="avatar"><img src="assets/img/rob-reich.jpg" alt="Rob Reich" /></div>
+        <p class="person-name">Rob Reich</p>
+        <p class="person-role">Faculty Director</p>
+        <p class="person-bio">Professor of Political Science at Stanford, with appointments in Philosophy, Law, and Education. Studies the governance of frontier science and technology. Associate director of Stanford HAI and faculty director of the McCoy Center's Ethics, Society, and Technology Initiatives.</p>
+      </div>
+    </div>
+
+    <h2>Lab Members</h2>
+    <div class="people-grid">
+      <div class="person">
+        <div class="avatar"><img class="pos-top" src="assets/img/roberta-fischli.jpg" alt="Roberta Fischli" /></div>
+        <p class="person-name">Roberta Fischli</p>
+        <p class="person-role">Postdoctoral Scholar</p>
+        <p class="person-bio">Postdoctoral researcher in Political Science at Stanford. Studies how to protect human liberty in an age of machine intelligence, working across AI governance, ethics, and safety. PhD summa cum laude from the University of St. Gallen.</p>
+      </div>
+      <div class="person">
+        <div class="avatar"><img src="assets/img/jeremy-martin.jpg" alt="Jeremy Martin" /></div>
+        <p class="person-name">Jeremy Martin</p>
+        <p class="person-role">Postdoctoral Scholar</p>
+        <p class="person-bio">Postdoctoral Scholar in Political Science and affiliate researcher in the Center for Philanthropy and Civil Society at Stanford. Studies the politics of philanthropic organizations, with a focus on foundations created by Black people. PhD from UC Berkeley.</p>
+      </div>
+      <div class="person">
+        <div class="avatar"><img class="pos-top" src="assets/img/dominic-zappia.jpg" alt="Dominic Zappia" /></div>
+        <p class="person-name">Dominic Zappia</p>
+        <p class="person-role">Research Affiliate</p>
+        <p class="person-bio">Research Associate with the Technology Ethics &amp; Policy Rising Scholars Program at the McCoy Family Center for Ethics in Society, working with Professor Rob Reich. Interested in how emerging technologies like AI interact with democratic values. B.A. in Economics, Political Science, and Philosophy from the University of Wisconsin–Madison.</p>
+      </div>
+      <div class="person">
+        <div class="avatar"><img src="assets/img/yasi-khan.jpg" alt="Yasi Khan" /></div>
+        <p class="person-name">Yasi Khan</p>
+        <!-- role guessed — confirm/correct her title within the lab -->
+        <p class="person-role">Research Affiliate</p>
+        <p class="person-bio">Studies the techno-ideologies that shape Silicon Valley discourse, including transhumanism, effective altruism, and accelerationism. Also researches AI personhood and AI's role in political polarization. Stanford BS in Symbolic Systems; MSc from Oxford.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>AI Governance Lab · Stanford University · <a href="https://aigovlab.substack.com/" target="_blank" rel="noopener">Substack</a> · <a href="https://www.stanford.edu/accessibility">Accessibility</a></footer>
+
+  <script src="assets/js/theme.js"></script>
+</body>
+</html>

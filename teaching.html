@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "dark" && t !== "light") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <title>Teaching — AI Governance Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Courier+Prime:400,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav id="top-nav">
+    <div class="nav-left">
+      <a id="logo" href="index.html">AI Governance Lab</a>
+      <a class="nav-link" href="index.html">home</a>
+      <a class="nav-link" href="people.html">people</a>
+      <a class="nav-link active" href="teaching.html">teaching</a>
+      <a class="nav-link" href="newsletter.html">substack</a>
+    </div>
+    <button class="theme-toggle" type="button">☾</button>
+  </nav>
+
+  <main>
+    <h1>Teaching</h1>
+    <p class="tagline">Courses connected to the lab.</p>
+
+    <div class="course-card">
+      <h3>CS283: Governing Artificial Intelligence — Law, Policy, and Institutions</h3>
+      <p>A course on the legal, policy, and institutional challenges of governing AI systems.</p>
+      <a href="https://yasikhan.github.io/cs-283-website/" target="_blank" rel="noopener">View course site →</a>
+    </div>
+
+    <!-- Add more <div class="course-card"> blocks here for additional classes. -->
+  </main>
+
+  <footer>AI Governance Lab · Stanford University · <a href="https://aigovlab.substack.com/" target="_blank" rel="noopener">Substack</a> · <a href="https://www.stanford.edu/accessibility">Accessibility</a></footer>
+
+  <script src="assets/js/theme.js"></script>
+</body>
+</html>
