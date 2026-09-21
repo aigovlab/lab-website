@@ -1,0 +1,17 @@
+# Press coverage and lab announcements, shown in the Recent News section of the
+# homepage.
+#
+# Add one block per item, newest first — this file's order is the section's
+# order. While the file is empty the section shows a "no coverage yet" message.
+#
+#   date    YYYY-MM-DD; only the month and year are displayed
+#   outlet  publication or venue name
+#   title   the headline, or a one-line description of the item
+#   url     where it links to
+#
+# Copy this shape:
+#
+# - date: 2026-08-14
+#   outlet: "The New York Times"
+#   title: "The headline of the story"
+#   url: "https://example.com/story"

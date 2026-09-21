@@ -2,15 +2,38 @@
 layout: default
 nav: teaching
 title: Teaching
+description: >-
+  Courses taught by members of the AI Governance Lab at Stanford University.
 ---
 {%- comment -%} Courses live in _data/courses.yml. {%- endcomment -%}
-<h1>Teaching</h1>
-<p class="tagline">Courses connected to the lab.</p>
+<div class="wrap page">
+  <h1 class="page-title">Teaching</h1>
+  <p class="page-standfirst">Courses run by members of the lab.</p>
 
-{%- for course in site.data.courses %}
-<div class="course-card">
-  <h3>{{ course.title | escape }}</h3>
-  <p>{{ course.description | strip_newlines | escape }}</p>
-  <a href="{{ course.url }}" target="_blank" rel="noopener">{{ course.link_text | default: "View course site" | escape }} →</a>
+  {%- if site.data.courses.size > 0 %}
+  <ul class="course-list">
+    {%- for course in site.data.courses %}
+    <li class="course">
+      <h2 class="course-title">{{ course.title | escape }}</h2>
+      {%- if course.term or course.instructors %}
+      <p class="course-meta">
+        {%- if course.term %}{{ course.term | escape }}{% endif -%}
+        {%- if course.term and course.instructors %} — {% endif -%}
+        {%- if course.instructors %}
+          {%- for name in course.instructors -%}
+          {{ name | escape }}{% unless forloop.last %}, {% endunless %}
+          {%- endfor -%}
+        {%- endif -%}
+      </p>
+      {%- endif %}
+      <p class="course-description">{{ course.description | strip_newlines | escape }}</p>
+      <p class="course-link">
+        <a href="{{ course.url }}" target="_blank" rel="noopener">{{ course.link_text | default: "Course site" | escape }} &raquo;</a>
+      </p>
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- else %}
+  <p class="empty-state">No courses listed yet. Add them to <code>_data/courses.yml</code>.</p>
+  {%- endif %}
 </div>
-{%- endfor %}

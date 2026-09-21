@@ -1,5 +1,7 @@
 # --- Site ---
 title: "AI Governance Lab"
+short_title: "AI Governance Lab"
+subtitle: "at Stanford University"
 description: >-
   The AI Governance Lab at Stanford University — research on how law, policy,
   and institutions can keep pace with rapidly advancing artificial intelligence.
@@ -11,8 +13,13 @@ description: >-
 url: "https://aigovlab.github.io"
 baseurl: "/lab-website"
 
-# Referenced from the footer and several pages; change it in one place.
+# Referenced from the footer and the Substack section; change it in one place.
 substack_url: "https://aigovlab.substack.com/"
+
+# The photo behind the lab name at the top of the homepage. Right now this is a
+# generated placeholder. To use a real photo: drop it in assets/img/ (landscape,
+# at least 1600px wide) and point this at it, e.g. /assets/img/hero.jpg
+hero_image: /assets/img/hero-placeholder.svg
 
 # --- Build ---
 markdown: kramdown

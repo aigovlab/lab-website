@@ -1,14 +1,31 @@
-# Top-nav items. Add a tab here and it appears on every page.
-# `id` is matched against each page's `nav:` front matter to set the active link.
+# Top-nav tabs, in the order they appear. Add a tab here and it shows up on
+# every page.
+#
+#   id       matched against each page's `nav:` front matter to mark the active
+#            tab; for homepage sections it must equal the section's HTML id
+#   label    the visible text
+#   url      "/#section" for a homepage section, "/page.html" for its own page
+#   section  true if this scrolls to a part of the homepage rather than loading
+#            a new page (drives the scroll highlighting)
 - id: home
-  label: home
-  url: /
+  label: Home
+  url: /#home
+  section: true
 - id: people
-  label: people
-  url: /people.html
+  label: People
+  url: /#people
+  section: true
 - id: teaching
-  label: teaching
+  label: Teaching
   url: /teaching.html
 - id: substack
-  label: substack
-  url: /newsletter.html
+  label: Substack
+  url: /#substack
+  section: true
+- id: research
+  label: Lab Research
+  url: /research.html
+- id: news
+  label: Recent News
+  url: /#news
+  section: true

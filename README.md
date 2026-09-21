@@ -1,7 +1,27 @@
 # AI Governance Lab website
 
-Static site for the AI Governance Lab (Stanford), modeled on the
-[CS283 course site](https://cs283.stanford.edu).
+Static site for the AI Governance Lab (Stanford). The structure follows
+[stanforddpl.org](https://stanforddpl.org) — Stanford's Democracy and
+Polarization Lab — with a full-bleed hero, a single scrolling homepage, and
+publication and news lists driven by data files.
+
+## How the six tabs are arranged
+
+Four tabs are sections of the homepage that the nav scrolls to; two are their
+own pages.
+
+| Tab | Where it lives |
+| --- | --- |
+| Home | `index.html`, the `#home` hero |
+| People | `index.html`, the `#people` section |
+| Teaching | `teaching.html` |
+| Substack | `index.html`, the `#substack` section |
+| Lab Research | `research.html` |
+| Recent News | `index.html`, the `#news` section |
+
+The nav is generated from `_data/nav.yml`, so the tabs exist in exactly one
+place. A tab with `section: true` scrolls to a homepage section whose HTML `id`
+must match the tab's `id`; without it, the tab loads a page.
 
 ## Structure
 
@@ -10,26 +30,40 @@ rather than touching HTML.
 
 **Edit these to change content:**
 
-- `_data/people.yml` — everyone on the People page (name, role, group, photo, bio)
+- `_data/people.yml` — everyone in the People section (name, role, group, photo, bio)
+- `_data/people_groups.yml` — the People subsections and their order
+- `_data/research.yml` — publications on the Lab Research page
+- `_data/news.yml` — items in the Recent News section
 - `_data/courses.yml` — courses on the Teaching page
 - `_data/nav.yml` — the top-nav tabs
-- `_data/people_groups.yml` — the sections on the People page and their order
-- `index.html`, `people.html`, `teaching.html`, `newsletter.html` — page prose
+- `index.html`, `research.html`, `teaching.html` — page prose
 
 **Edit these to change how it looks:**
 
 - `_layouts/default.html` — the page shell every page renders through
 - `_includes/head.html` — `<head>`, fonts, the pre-paint theme script
-- `_includes/nav.html` — nav bar and the light/dark toggle
+- `_includes/nav.html` — nav bar, mobile menu, light/dark toggle
 - `_includes/footer.html` — footer
-- `assets/css/style.css` — all styling (Stanford cardinal + cream, light/dark)
-- `assets/js/theme.js` — light/dark toggle behavior
-- `assets/img/` — member photos
-
-The nav and footer exist in exactly one place each. Adding a tab is a one-line
-change in `_data/nav.yml`, not an edit to every page.
+- `assets/css/style.css` — all styling (Stanford cardinal, light/dark)
+- `assets/js/theme.js` — light/dark toggle, mobile menu, scroll highlighting
+- `assets/img/` — member photos and the hero image
 
 ## Filling in real content
+
+### The hero photo
+
+The photo behind the lab name is currently a generated placeholder
+(`assets/img/hero-placeholder.svg`). To use a real one, drop a landscape image
+at least 1600px wide into `assets/img/` and point `hero_image` in `_config.yml`
+at it:
+
+```yaml
+hero_image: /assets/img/hero.jpg
+```
+
+A dark wash is applied over it automatically so the white lab name stays
+readable, but a photo that is already busy or bright in the middle will fight
+the text.
 
 ### Adding or editing a person
 
@@ -48,14 +82,51 @@ Set `photo_position: top` if centering crops the person's head awkwardly.
 Moving someone to `group: alumni` moves them to a "Lab Alumni" section, which
 stays hidden while it's empty.
 
+### Adding a publication
+
+Copy a block in `_data/research.yml`. Newest first — the file's order is the
+page's order.
+
+```yaml
+- title: "The paper's title"
+  authors: ["Jane Doe", "John Roe"]
+  year: 2026
+  venue: "Journal Name"      # or "Working paper"; omit if neither
+  details: "12(3): 145–170"  # volume/issue/pages, or a status note
+  links:
+    pdf: "https://example.org/paper.pdf"
+    doi: "https://doi.org/..."
+```
+
+`links` also accepts `url`, `code`, and `data`. Each one renders as a small
+button; leave out the ones that don't apply.
+
+### Adding a news item
+
+Copy a block in `_data/news.yml`. Newest first.
+
+```yaml
+- date: 2026-08-14
+  outlet: "The New York Times"
+  title: "The headline of the story"
+  url: "https://example.com/story"
+```
+
+### Clearing the example entries
+
+`_data/research.yml` and `_data/news.yml` ship with sample rows marked
+`placeholder: true`. Each list shows an "these are examples" note while any of
+those rows survive, so deleting them removes the note too.
+
 ### Adding a course
 
 Copy a block in `_data/courses.yml`.
 
 ### Editing page prose
 
-The About paragraph and contact block are in `index.html`; everything above the
-`---` line at the top of each page is configuration, everything below is content.
+The About paragraphs and the Substack blurb are in `index.html`; everything
+above the `---` line at the top of each page is configuration, everything below
+is content.
 
 ### Editing without a terminal
 
@@ -79,6 +150,18 @@ bundle exec jekyll serve
 
 and open http://localhost:4000/lab-website/ (the `/lab-website/` path matters —
 see the `baseurl` note in `_config.yml`).
+
+## Design notes
+
+- Type is **Public Sans** (the US Web Design System's typeface) for text and
+  **Newsreader** for headings, both from Google Fonts and loaded in
+  `_includes/head.html`.
+- The accent is Stanford cardinal `#8c1515`, which is also DPL's.
+- Sections alternate white and `#f7f5f2` instead of being boxed in cards.
+- The hero uses a fixed-attachment parallax only on wide, non-touch screens and
+  only when the visitor hasn't asked for reduced motion.
+- Light/dark is set before first paint by an inline script in `head.html`, so
+  the page never flashes the wrong theme.
 
 ## Repository
 

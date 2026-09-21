@@ -3,29 +3,135 @@ layout: default
 nav: home
 title: Home
 ---
-<h1>AI Governance Lab</h1>
-<p class="tagline">Stanford University</p>
+{%- comment -%}
+  The homepage carries four of the six tabs as sections: Home (the hero),
+  People, Substack, and Recent News. Teaching and Lab Research are their own
+  pages. Section ids here must match the `id` values in _data/nav.yml.
+{%- endcomment -%}
 
-<h2>About</h2>
-<p class="placeholder">
-  [Placeholder description — replace with the lab's real focus.] The AI
-  Governance Lab studies how law, policy, and institutions can keep pace
-  with rapidly advancing artificial intelligence. Our work spans
-  regulatory design, international coordination, and the technical
-  literacy policymakers need to govern AI systems responsibly. We
-  collaborate across computer science, law, and public policy to produce
-  research that is both rigorous and usable by the people making these
-  decisions.
-</p>
+<section id="home" class="hero" style="--hero-image: url('{{ site.hero_image | relative_url }}');">
+  <div class="hero-inner">
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <p class="hero-subtitle">{{ site.subtitle }}</p>
+  </div>
+</section>
 
-<h2>Substack</h2>
-<p>
-  The lab publishes on Substack —
-  <a href="{{ site.substack_url }}" target="_blank" rel="noopener">read it at aigovlab.substack.com →</a>
-</p>
+<section id="about" class="band">
+  <div class="wrap">
+    <h2 class="section-heading">About the lab</h2>
+    <div class="prose">
+      <p>
+        The AI Governance Lab studies how law, policy, and institutions can keep
+        pace with rapidly advancing artificial intelligence. Our work spans
+        regulatory design, international coordination, and the technical
+        literacy that policymakers need to govern AI systems responsibly.
+      </p>
+      <p>
+        We work across computer science, law, and public policy, because the
+        questions do: what a model can do is an engineering question, what it
+        should be allowed to do is not. The lab produces research meant to be
+        rigorous enough for the academy and usable by the people writing the
+        rules.
+      </p>
+      <p>
+        Training is central to the lab. Students and postdoctoral researchers
+        lead their own projects with regular mentorship, and the lab supports
+        that work with data, funding, and close collaboration.
+      </p>
+      <p class="placeholder">
+        This description is a first draft — replace it with the lab's own words
+        in <code>index.html</code>.
+      </p>
+    </div>
+  </div>
+</section>
 
-<h2>Get in touch</h2>
-<p class="placeholder">
-  [Placeholder — add a contact email, mailing list, or office location
-  here.]
-</p>
+<section id="people" class="band band-alt">
+  <div class="wrap">
+    <h2 class="section-heading">People</h2>
+    {%- comment -%}
+      Content lives in _data/people.yml and the section list in
+      _data/people_groups.yml. Groups with nobody in them are skipped, so the
+      "Lab Alumni" heading stays hidden until someone is assigned to it.
+    {%- endcomment -%}
+    <p class="note">Bios are placeholders until each person approves their own.</p>
+
+    {%- for group in site.data.people_groups %}
+      {%- assign members = site.data.people | where: "group", group.id %}
+      {%- if members.size > 0 %}
+    <h3 class="group-heading">{{ group.heading }}</h3>
+    <ul class="people-grid">
+      {%- for person in members %}
+      <li class="person">
+        <div class="avatar">
+          {%- if person.photo %}
+          <img{% if person.photo_position == 'top' %} class="pos-top"{% endif %} src="{{ '/assets/img/' | append: person.photo | relative_url }}" alt="" loading="lazy" width="132" height="132" />
+          {%- endif %}
+        </div>
+        <p class="person-name">{{ person.name | escape }}</p>
+        <p class="person-role">{{ person.role | escape }}</p>
+        {%- if person.bio %}
+        <p class="person-bio">{{ person.bio | strip_newlines | escape }}</p>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+      {%- endif %}
+    {%- endfor %}
+  </div>
+</section>
+
+<section id="substack" class="band">
+  <div class="wrap">
+    <h2 class="section-heading">Substack</h2>
+    <div class="prose">
+      <p>
+        The lab writes about AI policy as it happens — what a new rule actually
+        does, what a new model actually changes, and where the two miss each
+        other. Free, and roughly monthly.
+      </p>
+    </div>
+    <div class="substack-embed">
+      <iframe
+        src="{{ site.substack_url | append: 'embed' }}"
+        width="100%"
+        height="320"
+        frameborder="0"
+        scrolling="no"
+        title="Subscribe to the AI Governance Lab newsletter"
+      ></iframe>
+    </div>
+    <p class="see-all">
+      <a href="{{ site.substack_url }}" target="_blank" rel="noopener">Read every post on Substack &raquo;</a>
+    </p>
+  </div>
+</section>
+
+<section id="news" class="band band-alt">
+  <div class="wrap">
+    <h2 class="section-heading">Recent News</h2>
+    {%- comment -%} Items live in _data/news.yml, newest first. {%- endcomment -%}
+    {%- assign news_placeholders = site.data.news | where: "placeholder", true %}
+    {%- if news_placeholders.size > 0 %}
+    <p class="note">The items below are examples. Replace them in <code>_data/news.yml</code>.</p>
+    {%- endif %}
+
+    {%- if site.data.news.size > 0 %}
+    <ul class="news-list">
+      {%- for item in site.data.news %}
+      <li class="news-item">
+        <p class="news-date">
+          <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %Y" }}</time>
+        </p>
+        <p class="news-body">
+          <a href="{{ item.url }}"{% unless item.url contains '#' %} target="_blank" rel="noopener"{% endunless %}>{{ item.title | escape }}</a>
+          <span class="news-outlet">{{ item.outlet | escape }}</span>
+        </p>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p class="empty-state">No coverage listed yet. Add items to <code>_data/news.yml</code>.</p>
+    {%- endif %}
+  </div>
+</section>

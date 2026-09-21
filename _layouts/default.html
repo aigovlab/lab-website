@@ -1,14 +1,17 @@
 {%- comment -%}
   The one page shell. Every page in the site renders through this, so the head,
-  nav, and footer exist in exactly one place each.
+  nav, and footer exist in exactly one place each. Pages supply their own
+  containers: the homepage runs full-bleed sections, inner pages wrap their
+  content in `.wrap.page`.
 {%- endcomment -%}
 <!DOCTYPE html>
 <html lang="en">
 {%- include head.html %}
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   {%- include nav.html %}
 
-  <main>
+  <main id="main">
     {{ content }}
   </main>
 

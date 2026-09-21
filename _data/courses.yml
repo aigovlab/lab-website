@@ -1,7 +1,15 @@
 # Courses on the Teaching page. Add one by copying a block — no HTML required.
+#
+#   title       course number and name
+#   term        when it runs, e.g. "Autumn 2026" — optional
+#   instructors list of names — optional
+#   description one or two plain sentences
+#   url         the course site
+#   link_text   the link's wording; defaults to "Course site"
+
 - title: "CS283: Governing Artificial Intelligence — Law, Policy, and Institutions"
   description: >-
     A course on the legal, policy, and institutional challenges of governing
     AI systems.
   url: "https://cs283.stanford.edu"
-  link_text: "View course site"
+  link_text: "Course site"
