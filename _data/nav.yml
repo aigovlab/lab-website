@@ -1,0 +1,14 @@
+# Top-nav items. Add a tab here and it appears on every page.
+# `id` is matched against each page's `nav:` front matter to set the active link.
+- id: home
+  label: home
+  url: /
+- id: people
+  label: people
+  url: /people.html
+- id: teaching
+  label: teaching
+  url: /teaching.html
+- id: substack
+  label: substack
+  url: /newsletter.html

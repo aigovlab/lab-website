@@ -1,69 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem("theme");
-        if (t !== "dark" && t !== "light") {
-          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        }
-        document.documentElement.setAttribute("data-theme", t);
-      } catch (e) {
-        document.documentElement.setAttribute("data-theme", "light");
-      }
-    })();
-  </script>
-  <title>AI Governance Lab</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Courier+Prime:400,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-  <nav id="top-nav">
-    <div class="nav-left">
-      <a id="logo" href="index.html">AI Governance Lab</a>
-      <a class="nav-link active" href="index.html">home</a>
-      <a class="nav-link" href="people.html">people</a>
-      <a class="nav-link" href="teaching.html">teaching</a>
-      <a class="nav-link" href="newsletter.html">substack</a>
-    </div>
-    <button class="theme-toggle" type="button">☾</button>
-  </nav>
+---
+layout: default
+nav: home
+title: Home
+---
+<h1>AI Governance Lab</h1>
+<p class="tagline">Stanford University</p>
 
-  <main>
-    <h1>AI Governance Lab</h1>
-    <p class="tagline">Stanford University</p>
+<h2>About</h2>
+<p class="placeholder">
+  [Placeholder description — replace with the lab's real focus.] The AI
+  Governance Lab studies how law, policy, and institutions can keep pace
+  with rapidly advancing artificial intelligence. Our work spans
+  regulatory design, international coordination, and the technical
+  literacy policymakers need to govern AI systems responsibly. We
+  collaborate across computer science, law, and public policy to produce
+  research that is both rigorous and usable by the people making these
+  decisions.
+</p>
 
-    <h2>About</h2>
-    <p class="placeholder">
-      [Placeholder description — replace with the lab's real focus.] The AI
-      Governance Lab studies how law, policy, and institutions can keep pace
-      with rapidly advancing artificial intelligence. Our work spans
-      regulatory design, international coordination, and the technical
-      literacy policymakers need to govern AI systems responsibly. We
-      collaborate across computer science, law, and public policy to produce
-      research that is both rigorous and usable by the people making these
-      decisions.
-    </p>
+<h2>Substack</h2>
+<p>
+  The lab publishes on Substack —
+  <a href="{{ site.substack_url }}" target="_blank" rel="noopener">read it at aigovlab.substack.com →</a>
+</p>
 
-    <h2>Substack</h2>
-    <p>
-      The lab publishes on Substack —
-      <a href="https://aigovlab.substack.com/" target="_blank" rel="noopener">read it at aigovlab.substack.com →</a>
-    </p>
-
-    <h2>Get in touch</h2>
-    <p class="placeholder">
-      [Placeholder — add a contact email, mailing list, or office location
-      here.]
-    </p>
-  </main>
-
-  <footer>AI Governance Lab · Stanford University · <a href="https://aigovlab.substack.com/" target="_blank" rel="noopener">Substack</a> · <a href="https://www.stanford.edu/accessibility">Accessibility</a></footer>
-
-  <script src="assets/js/theme.js"></script>
-</body>
-</html>
+<h2>Get in touch</h2>
+<p class="placeholder">
+  [Placeholder — add a contact email, mailing list, or office location
+  here.]
+</p>

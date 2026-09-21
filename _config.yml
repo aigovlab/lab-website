@@ -1,0 +1,29 @@
+# --- Site ---
+title: "AI Governance Lab"
+description: >-
+  The AI Governance Lab at Stanford University — research on how law, policy,
+  and institutions can keep pace with rapidly advancing artificial intelligence.
+
+# GitHub Pages serves this repo from a project path, not a domain root, so
+# `baseurl` must stay the repo name. Every internal link and asset goes through
+# the `relative_url` filter, which prepends it — drop that and the CSS 404s in
+# production while still looking fine locally.
+url: "https://aigovlab.github.io"
+baseurl: "/lab-website"
+
+# Referenced from the footer and several pages; change it in one place.
+substack_url: "https://aigovlab.substack.com/"
+
+# --- Build ---
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+timezone: America/Los_Angeles
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .bundle

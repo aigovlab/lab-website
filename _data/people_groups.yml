@@ -1,0 +1,8 @@
+# Sections on the People page, rendered in this order. A group with nobody in it
+# is skipped entirely, so `alumni` stays invisible until someone is moved into it.
+- id: faculty
+  heading: Faculty Director
+- id: members
+  heading: Lab Members
+- id: alumni
+  heading: Lab Alumni

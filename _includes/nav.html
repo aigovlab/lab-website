@@ -1,0 +1,30 @@
+{%- comment -%}
+  Top navigation. Edit the tabs in _data/nav.yml — this markup and every page
+  picks them up automatically. The active link is whichever item's `id` matches
+  the current page's `nav:` front matter.
+{%- endcomment -%}
+<nav id="top-nav">
+  <div class="nav-left">
+    <a id="logo" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    {%- for item in site.data.nav %}
+    <a class="nav-link{% if page.nav == item.id %} active{% endif %}" href="{{ item.url | relative_url }}">{{ item.label }}</a>
+    {%- endfor %}
+  </div>
+  {%- comment -%}
+    Light/dark toggle: sliding sun/moon pill (design adapted from the CS283 site,
+    which adapted it from vitalik.eth.limo). The knob's position is driven by the
+    data-theme attribute in CSS, so it is already correct pre-paint; the
+    visually-hidden checkbox is the accessible control that theme.js keeps in
+    sync. Icons stroke via currentColor, i.e. the nav foreground.
+  {%- endcomment -%}
+  <div id="color-mode-switch">
+    <svg class="cms-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+    </svg>
+    <input type="checkbox" id="theme-switch">
+    <label for="theme-switch">Toggle dark mode</label>
+    <svg class="cms-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+    </svg>
+  </div>
+</nav>

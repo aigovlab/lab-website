@@ -1,0 +1,22 @@
+{%- comment -%}
+  The one page shell. Every page in the site renders through this, so the head,
+  nav, and footer exist in exactly one place each.
+{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="en">
+{%- include head.html %}
+<body>
+  {%- include nav.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+  {%- comment -%}
+    `defer` matters: theme.js queries the DOM immediately rather than waiting on
+    DOMContentLoaded, so it needs the document already parsed.
+  {%- endcomment -%}
+  <script src="{{ '/assets/js/theme.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+</body>
+</html>

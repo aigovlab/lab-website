@@ -1,0 +1,66 @@
+# Everyone on the People page. To add someone, copy a block and fill it in —
+# no HTML required.
+#
+#   name           displayed name
+#   role           title shown under the name
+#   group          which section they appear in; see _data/people_groups.yml
+#                  (faculty | members | alumni)
+#   photo          filename inside assets/img/ — omit for a blank avatar circle
+#   photo_position "top" crops the portrait toward the top of the frame, for
+#                  photos where centering cuts off the head; omit otherwise
+#   bio            free text, plain prose (no HTML)
+
+- name: Rob Reich
+  role: Faculty Director
+  group: faculty
+  photo: rob-reich.jpg
+  bio: >-
+    Professor of Political Science at Stanford, with appointments in Philosophy,
+    Law, and Education. Studies the governance of frontier science and
+    technology. Associate director of Stanford HAI and faculty director of the
+    McCoy Center's Ethics, Society, and Technology Initiatives.
+
+- name: Roberta Fischli
+  role: Postdoctoral Scholar
+  group: members
+  photo: roberta-fischli.jpg
+  photo_position: top
+  bio: >-
+    Postdoctoral researcher in Political Science at Stanford. Studies how to
+    protect human liberty in an age of machine intelligence, working across AI
+    governance, ethics, and safety. PhD summa cum laude from the University of
+    St. Gallen.
+
+- name: Jeremy Martin
+  role: Postdoctoral Scholar
+  group: members
+  photo: jeremy-martin.jpg
+  bio: >-
+    Postdoctoral Scholar in Political Science and affiliate researcher in the
+    Center for Philanthropy and Civil Society at Stanford. Studies the politics
+    of philanthropic organizations, with a focus on foundations created by Black
+    people. PhD from UC Berkeley.
+
+- name: Dominic Zappia
+  role: Research Affiliate
+  group: members
+  photo: dominic-zappia.jpg
+  photo_position: top
+  bio: >-
+    Research Associate with the Technology Ethics & Policy Rising Scholars
+    Program at the McCoy Family Center for Ethics in Society, working with
+    Professor Rob Reich. Interested in how emerging technologies like AI
+    interact with democratic values. B.A. in Economics, Political Science, and
+    Philosophy from the University of Wisconsin–Madison.
+
+# NOTE: role below was guessed by whoever built the first version of this site —
+# confirm the correct title within the lab and update it.
+- name: Yasi Khan
+  role: Research Affiliate
+  group: members
+  photo: yasi-khan.jpg
+  bio: >-
+    Studies the techno-ideologies that shape Silicon Valley discourse, including
+    transhumanism, effective altruism, and accelerationism. Also researches AI
+    personhood and AI's role in political polarization. Stanford BS in Symbolic
+    Systems; MSc from Oxford.

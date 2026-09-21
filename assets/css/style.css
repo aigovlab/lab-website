@@ -94,19 +94,74 @@ nav#top-nav {
   color: var(--nav-link-hover);
 }
 
-.theme-toggle {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 999px;
+/* Light/dark toggle — sliding sun/moon pill (design adapted from the CS283 site,
+   which adapted it from vitalik.eth.limo). Sits as the right-hand flex item of
+   the nav. The knob position is driven by the data-theme attribute, so it is
+   already correct pre-paint; the hidden checkbox is the accessible control that
+   assets/js/theme.js keeps in sync. Icons stroke via currentColor. */
+#color-mode-switch {
+  display: flex;
+  align-items: center;
+  flex: none;
   color: #ffffff;
-  cursor: pointer;
-  font-family: var(--font-nav);
-  font-size: 0.85rem;
-  padding: 0.3rem 0.75rem;
 }
 
-.theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.12);
+#color-mode-switch .cms-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  flex: none;
+}
+
+/* Visually-hidden checkbox; the label is the pill the user actually clicks. */
+#color-mode-switch input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+/* The pill track. Grey reads well against the cardinal nav in both themes. */
+#color-mode-switch label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 42px;
+  height: 21px;
+  border-radius: 30px;
+  background: #9a9a9a;
+  display: block;
+  position: relative;
+  margin: 0;
+}
+
+/* The knob. Base position = light (left, by the sun). */
+#color-mode-switch label::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 15px;
+  height: 15px;
+  background: #ffffff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+#color-mode-switch label:active::after {
+  width: 30px;
+}
+
+/* The real checkbox is invisible, so its focus ring would be too. Put a visible
+   ring on the pill instead when the control is reached by keyboard. */
+#color-mode-switch input:focus-visible + label {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Dark: knob slides right, toward the moon. */
+:root[data-theme="dark"] #color-mode-switch label::after {
+  left: calc(100% - 3px);
+  transform: translateX(-100%);
 }
 
 /* ---------- Layout ---------- */
