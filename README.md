@@ -8,6 +8,7 @@ Static site for the AI Governance Lab (Stanford), modeled on the
 - `index.html` — home / About
 - `people.html` — lab members
 - `teaching.html` — links to related courses (currently CS283)
+- `newsletter.html` — newsletter page
 - `assets/css/style.css` — all styling (Stanford cardinal + cream palette, light/dark toggle)
 - `assets/js/theme.js` — light/dark mode toggle logic
 - `assets/img/` — put member photos here
@@ -23,17 +24,34 @@ No build step — plain HTML/CSS/JS, safe to open `index.html` directly or serve
   `<div class="avatar"><img src="assets/img/yourfile.jpg" alt="Name"></div>`.
 - **Teaching**: duplicate the `.course-card` block in `teaching.html` to add more courses.
 
-## Deploying to GitHub Pages (dazzap9.github.io)
+## Repository
 
-1. Create a new GitHub repo, e.g. `ai-governance-lab`, under the `dazzap9` account.
-2. From this folder:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial site"
-   git branch -M main
-   git remote add origin https://github.com/dazzap9/ai-governance-lab.git
-   git push -u origin main
-   ```
-3. In the repo's Settings → Pages, set the source to the `main` branch, root folder.
-4. The site will be live at `https://dazzap9.github.io/ai-governance-lab/`.
+This site lives at [`aigovlab/lab-website`](https://github.com/aigovlab/lab-website)
+under the AI Governance Lab GitHub organization.
+
+It was seeded from `dazzap9/ai-governance-lab`, which is kept as an `upstream`
+remote (fetch-only) in case we want to pull in changes from that copy:
+
+```bash
+git fetch upstream          # see what changed over there
+git merge upstream/main     # only if you actually want those changes
+```
+
+Day-to-day, just push to `origin` as normal:
+
+```bash
+git add .
+git commit -m "Describe your change"
+git push
+```
+
+## Deployment
+
+The site is deployed with GitHub Pages from the `main` branch, root folder
+(Settings → Pages). Every push to `main` republishes it automatically; it
+usually goes live within a minute or two.
+
+Live URL: https://aigovlab.github.io/lab-website/
+
+There is no build step — GitHub serves the HTML/CSS/JS exactly as committed,
+so what you see opening `index.html` locally is what you get in production.
