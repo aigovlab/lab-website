@@ -7,6 +7,10 @@
 #   url      "/#section" for a homepage section, "/page.html" for its own page
 #   section  true if this scrolls to a part of the homepage rather than loading
 #            a new page (drives the scroll highlighting)
+#
+# The homepage's sections are laid out in this same order, so the highlighted
+# tab moves left to right as you scroll. Reorder a section tab here and move
+# its <section> in index.html to match.
 - id: home
   label: Home
   url: /#home
@@ -15,17 +19,21 @@
   label: People
   url: /#people
   section: true
+- id: news
+  label: News
+  url: /#news
+  section: true
+- id: events
+  label: Events
+  url: /#events
+  section: true
+- id: research
+  label: Lab Research
+  url: /research.html
 - id: teaching
   label: Teaching
   url: /teaching.html
 - id: substack
   label: Substack
   url: /#substack
-  section: true
-- id: research
-  label: Lab Research
-  url: /research.html
-- id: news
-  label: Recent News
-  url: /#news
   section: true

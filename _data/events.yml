@@ -1,0 +1,19 @@
+# Talks, workshops, and other lab events, shown in the Events section of the
+# homepage.
+#
+# Add one block per event, soonest first — this file's order is the section's
+# order. While the file is empty the section shows a "nothing scheduled" message.
+#
+#   date      YYYY-MM-DD
+#   title     what the event is called
+#   location  room, building, or "Online" — optional
+#   summary   a sentence on what it is — optional
+#   url       a registration or details page — optional
+#
+# Copy this shape:
+#
+# - date: 2026-10-08
+#   title: "Workshop: Auditing frontier models"
+#   location: "Encina Hall, Stanford"
+#   summary: "A half-day session on what third-party model audits can and cannot establish."
+#   url: "https://example.com/register"

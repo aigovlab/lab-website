@@ -5,23 +5,29 @@ Static site for the AI Governance Lab (Stanford). The structure follows
 Polarization Lab — with a full-bleed hero, a single scrolling homepage, and
 publication and news lists driven by data files.
 
-## How the six tabs are arranged
+## How the seven tabs are arranged
 
-Four tabs are sections of the homepage that the nav scrolls to; two are their
+Five tabs are sections of the homepage that the nav scrolls to; two are their
 own pages.
 
 | Tab | Where it lives |
 | --- | --- |
 | Home | `index.html`, the `#home` hero |
 | People | `index.html`, the `#people` section |
+| News | `index.html`, the `#news` section |
+| Events | `index.html`, the `#events` section |
+| Lab Research | `research.html` |
 | Teaching | `teaching.html` |
 | Substack | `index.html`, the `#substack` section |
-| Lab Research | `research.html` |
-| Recent News | `index.html`, the `#news` section |
 
 The nav is generated from `_data/nav.yml`, so the tabs exist in exactly one
 place. A tab with `section: true` scrolls to a homepage section whose HTML `id`
 must match the tab's `id`; without it, the tab loads a page.
+
+The homepage's sections run in the same order as the tabs, so the highlighted
+tab moves left to right as you scroll. If you reorder a section tab in
+`_data/nav.yml`, move its `<section>` in `index.html` to match — and check the
+`band` / `band band-alt` classes still alternate down the page.
 
 ## Structure
 
@@ -33,7 +39,8 @@ rather than touching HTML.
 - `_data/people.yml` — everyone in the People section (name, role, group, photo, bio)
 - `_data/people_groups.yml` — the People subsections and their order
 - `_data/research.yml` — publications on the Lab Research page
-- `_data/news.yml` — items in the Recent News section
+- `_data/news.yml` — items in the News section
+- `_data/events.yml` — items in the Events section
 - `_data/courses.yml` — courses on the Teaching page
 - `_data/nav.yml` — the top-nav tabs
 - `index.html`, `research.html`, `teaching.html` — page prose
@@ -52,17 +59,17 @@ rather than touching HTML.
 
 ### The hero photo
 
-The photo behind the lab name is currently a generated placeholder
-(`assets/img/hero-placeholder.svg`). To use a real one, drop a landscape image
-at least 1600px wide into `assets/img/` and point `hero_image` in `_config.yml`
-at it:
+The photo behind the lab name is `assets/img/coda.jpg`. To change it, drop a
+landscape image at least 1600px wide into `assets/img/` and point `hero_image`
+in `_config.yml` at it:
 
 ```yaml
-hero_image: /assets/img/hero.jpg
+hero_image: /assets/img/coda.jpg
 ```
 
-A dark wash is applied over it automatically so the white lab name stays
-readable, but a photo that is already busy or bright in the middle will fight
+A dark scrim goes over the photo automatically, weighted toward the middle
+where the lab name sits, so white type stays readable over bright glass or
+sky. A photo that is very bright straight through the middle will still fight
 the text.
 
 ### Adding or editing a person
@@ -71,12 +78,19 @@ Open `_data/people.yml` and copy an existing block:
 
 ```yaml
 - name: Jane Doe
+  last_name: Doe         # each group is alphabetized by this
   role: Postdoctoral Scholar
-  group: members        # faculty | members | alumni
-  photo: jane-doe.jpg   # file in assets/img/; omit for a blank circle
-  bio: >-
-    Plain prose. No HTML needed.
+  group: members         # faculty | members | alumni
+  photo: jane-doe.jpg    # file in assets/img/; omit for a blank circle
+  url: https://example.edu/people/jane-doe
 ```
+
+`last_name` is required: each group is sorted by it, so the order of the file
+itself doesn't matter and adding someone never means resorting by hand.
+
+`url` makes the whole card a link to that person's faculty or personal page,
+with a light red highlight on hover. Leave it out and the card renders as plain
+text instead.
 
 Set `photo_position: top` if centering crops the person's head awkwardly.
 Moving someone to `group: alumni` moves them to a "Lab Alumni" section, which
@@ -112,11 +126,18 @@ Copy a block in `_data/news.yml`. Newest first.
   url: "https://example.com/story"
 ```
 
-### Clearing the example entries
+### Adding an event
 
-`_data/research.yml` and `_data/news.yml` ship with sample rows marked
-`placeholder: true`. Each list shows an "these are examples" note while any of
-those rows survive, so deleting them removes the note too.
+Copy a block in `_data/events.yml`. Soonest first. Everything but `date` and
+`title` is optional.
+
+```yaml
+- date: 2026-10-08
+  title: "Workshop: Auditing frontier models"
+  location: "Encina Hall, Stanford"
+  summary: "A half-day session on what third-party audits can establish."
+  url: "https://example.com/register"
+```
 
 ### Adding a course
 
@@ -160,6 +181,7 @@ see the `baseurl` note in `_config.yml`).
 - Sections alternate white and `#f7f5f2` instead of being boxed in cards.
 - The hero uses a fixed-attachment parallax only on wide, non-touch screens and
   only when the visitor hasn't asked for reduced motion.
+- The footer's copyright year comes from the build time, so it can't go stale.
 - Light/dark is set before first paint by an inline script in `head.html`, so
   the page never flashes the wrong theme.
 

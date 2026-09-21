@@ -52,32 +52,88 @@ title: Home
     {%- comment -%}
       Content lives in _data/people.yml and the section list in
       _data/people_groups.yml. Groups with nobody in them are skipped, so the
-      "Lab Alumni" heading stays hidden until someone is assigned to it.
+      "Lab Alumni" heading stays hidden until someone is assigned to it. Each
+      group is alphabetized by the `last_name` field rather than by the order
+      of the data file, so adding someone never means resorting it by hand.
     {%- endcomment -%}
-    <p class="note">Bios are placeholders until each person approves their own.</p>
-
     {%- for group in site.data.people_groups %}
-      {%- assign members = site.data.people | where: "group", group.id %}
+      {%- assign members = site.data.people | where: "group", group.id | sort: "last_name" %}
       {%- if members.size > 0 %}
     <h3 class="group-heading">{{ group.heading }}</h3>
     <ul class="people-grid">
       {%- for person in members %}
+      {%- comment -%}
+        With a `url` the whole card is one link, so the photo and the name are
+        a single target; without one it degrades to the same card as plain text.
+      {%- endcomment -%}
       <li class="person">
-        <div class="avatar">
-          {%- if person.photo %}
-          <img{% if person.photo_position == 'top' %} class="pos-top"{% endif %} src="{{ '/assets/img/' | append: person.photo | relative_url }}" alt="" loading="lazy" width="132" height="132" />
-          {%- endif %}
-        </div>
-        <p class="person-name">{{ person.name | escape }}</p>
-        <p class="person-role">{{ person.role | escape }}</p>
-        {%- if person.bio %}
-        <p class="person-bio">{{ person.bio | strip_newlines | escape }}</p>
-        {%- endif %}
+        {%- if person.url %}<a class="person-card" href="{{ person.url }}" target="_blank" rel="noopener">{% else %}<div class="person-card">{% endif %}
+          <span class="avatar">
+            {%- if person.photo %}
+            <img{% if person.photo_position == 'top' %} class="pos-top"{% endif %} src="{{ '/assets/img/' | append: person.photo | relative_url }}" alt="" loading="lazy" width="132" height="132" />
+            {%- endif %}
+          </span>
+          <span class="person-name">{{ person.name | escape }}</span>
+          <span class="person-role">{{ person.role | escape }}</span>
+        {%- if person.url %}</a>{% else %}</div>{% endif %}
       </li>
       {%- endfor %}
     </ul>
       {%- endif %}
     {%- endfor %}
+  </div>
+</section>
+
+<section id="news" class="band">
+  <div class="wrap">
+    <h2 class="section-heading">News</h2>
+    {%- comment -%} Items live in _data/news.yml, newest first. {%- endcomment -%}
+    {%- if site.data.news.size > 0 %}
+    <ul class="news-list">
+      {%- for item in site.data.news %}
+      <li class="news-item">
+        <p class="news-date">
+          <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %Y" }}</time>
+        </p>
+        <p class="news-body">
+          <a href="{{ item.url }}"{% unless item.url contains '#' %} target="_blank" rel="noopener"{% endunless %}>{{ item.title | escape }}</a>
+          <span class="news-outlet">{{ item.outlet | escape }}</span>
+        </p>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p class="empty-state">No coverage listed yet. Add items to <code>_data/news.yml</code>.</p>
+    {%- endif %}
+  </div>
+</section>
+
+<section id="events" class="band band-alt">
+  <div class="wrap">
+    <h2 class="section-heading">Events</h2>
+    {%- comment -%} Items live in _data/events.yml, soonest first. {%- endcomment -%}
+    {%- if site.data.events.size > 0 %}
+    <ul class="news-list">
+      {%- for event in site.data.events %}
+      <li class="news-item">
+        <p class="news-date">
+          <time datetime="{{ event.date | date: '%Y-%m-%d' }}">{{ event.date | date: "%b %-d, %Y" }}</time>
+        </p>
+        <p class="news-body">
+          {%- if event.url %}
+          <a href="{{ event.url }}" target="_blank" rel="noopener">{{ event.title | escape }}</a>
+          {%- else %}
+          <span class="news-title">{{ event.title | escape }}</span>
+          {%- endif %}
+          {%- if event.location %}<span class="news-outlet">{{ event.location | escape }}</span>{% endif %}
+          {%- if event.summary %}<span class="news-summary">{{ event.summary | strip_newlines | escape }}</span>{% endif %}
+        </p>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p class="empty-state">Nothing scheduled right now. Add events to <code>_data/events.yml</code>.</p>
+    {%- endif %}
   </div>
 </section>
 
@@ -107,31 +163,4 @@ title: Home
   </div>
 </section>
 
-<section id="news" class="band band-alt">
-  <div class="wrap">
-    <h2 class="section-heading">Recent News</h2>
-    {%- comment -%} Items live in _data/news.yml, newest first. {%- endcomment -%}
-    {%- assign news_placeholders = site.data.news | where: "placeholder", true %}
-    {%- if news_placeholders.size > 0 %}
-    <p class="note">The items below are examples. Replace them in <code>_data/news.yml</code>.</p>
-    {%- endif %}
 
-    {%- if site.data.news.size > 0 %}
-    <ul class="news-list">
-      {%- for item in site.data.news %}
-      <li class="news-item">
-        <p class="news-date">
-          <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %Y" }}</time>
-        </p>
-        <p class="news-body">
-          <a href="{{ item.url }}"{% unless item.url contains '#' %} target="_blank" rel="noopener"{% endunless %}>{{ item.title | escape }}</a>
-          <span class="news-outlet">{{ item.outlet | escape }}</span>
-        </p>
-      </li>
-      {%- endfor %}
-    </ul>
-    {%- else %}
-    <p class="empty-state">No coverage listed yet. Add items to <code>_data/news.yml</code>.</p>
-    {%- endif %}
-  </div>
-</section>

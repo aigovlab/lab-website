@@ -16,10 +16,11 @@ baseurl: "/lab-website"
 # Referenced from the footer and the Substack section; change it in one place.
 substack_url: "https://aigovlab.substack.com/"
 
-# The photo behind the lab name at the top of the homepage. Right now this is a
-# generated placeholder. To use a real photo: drop it in assets/img/ (landscape,
-# at least 1600px wide) and point this at it, e.g. /assets/img/hero.jpg
-hero_image: /assets/img/hero-placeholder.svg
+# The photo behind the lab name at the top of the homepage. To change it, drop a
+# landscape image at least 1600px wide into assets/img/ and point this at it.
+# A dark wash goes over the photo automatically so the white lab name stays
+# readable, but a photo that is bright or busy through the middle will fight it.
+hero_image: /assets/img/coda.jpg
 
 # --- Build ---
 markdown: kramdown

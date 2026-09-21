@@ -11,11 +11,6 @@ description: >-
   <h1 class="page-title">Lab Research</h1>
   <p class="page-standfirst">Published papers and working drafts from the lab.</p>
 
-  {%- assign research_placeholders = site.data.research | where: "placeholder", true %}
-  {%- if research_placeholders.size > 0 %}
-  <p class="note">The entries below are examples. Replace them in <code>_data/research.yml</code>.</p>
-  {%- endif %}
-
   {%- if site.data.research.size > 0 %}
   <ul class="pub-list">
     {%- for paper in site.data.research %}

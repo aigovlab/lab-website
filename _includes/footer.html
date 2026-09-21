@@ -1,6 +1,13 @@
 <footer>
   <div class="wrap footer-inner">
-    <p class="footer-name">{{ site.title }} {{ site.subtitle }}</p>
+    <div class="footer-identity">
+      <p class="footer-name">{{ site.title }} {{ site.subtitle }}</p>
+      {%- comment -%}
+        The year comes from the build time rather than being typed in, so it
+        cannot quietly go stale — every push to main rebuilds the site.
+      {%- endcomment -%}
+      <p class="footer-copyright">&copy; {{ site.time | date: "%Y" }}</p>
+    </div>
     <p class="footer-links">
       <a href="{{ site.substack_url }}" target="_blank" rel="noopener">Substack</a>
       <a href="https://www.stanford.edu/accessibility">Accessibility</a>
