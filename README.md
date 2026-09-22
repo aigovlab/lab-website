@@ -43,6 +43,7 @@ rather than touching HTML.
 - `_data/events.yml` — items in the Events section
 - `_data/courses.yml` — courses on the Teaching page
 - `_data/nav.yml` — the top-nav tabs
+- `_data/substack.yml` — the latest Substack posts (generated, see below)
 - `index.html`, `research.html`, `teaching.html` — page prose
 
 **Edit these to change how it looks:**
@@ -54,6 +55,7 @@ rather than touching HTML.
 - `assets/css/style.css` — all styling (Stanford cardinal, light/dark)
 - `assets/js/theme.js` — light/dark toggle, mobile menu, scroll highlighting
 - `assets/img/` — member photos and the hero image
+- `script/update-substack.rb` — refreshes `_data/substack.yml` from the RSS feed
 
 ## Filling in real content
 
@@ -142,6 +144,27 @@ Copy a block in `_data/events.yml`. Soonest first. Everything but `date` and
 ### Adding a course
 
 Copy a block in `_data/courses.yml`.
+
+### Refreshing the Substack posts
+
+The bottom of the homepage lists the three most recent newsletter posts, under
+the subscribe box. They come from `_data/substack.yml`, which is generated from
+the Substack RSS feed. To pull in new posts, run:
+
+```sh
+ruby script/update-substack.rb
+```
+
+then commit the changed `_data/substack.yml`. The script needs nothing but
+Ruby — no `bundle`, no gems — and it reads the newsletter address from
+`substack_url` in `_config.yml`.
+
+This is a manual step on purpose. GitHub Pages builds the site with no network
+access, so the feed cannot be read at build time, and fetching it in the
+browser would put a third-party request on every page load. Re-run it whenever
+you want the homepage to catch up; nothing breaks if it goes a while between
+runs, the list just shows older posts. To list more or fewer than three, change
+`POST_COUNT` at the top of the script and re-run it.
 
 ### Editing page prose
 

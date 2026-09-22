@@ -543,6 +543,19 @@ a.person-card:hover .avatar {
   background: #ffffff;
 }
 
+/* The post list under the embed reuses the news list below, so the only new
+   piece is its heading: centered over the 820px list rather than ruled across
+   the full band like the People group headings. */
+.posts-heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: var(--ink-soft);
+  margin: 3rem 0 1.25rem;
+}
+
 /* ---------- Recent news ---------- */
 
 .news-list {

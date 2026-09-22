@@ -1,0 +1,25 @@
+# The most recent posts from the lab's Substack, listed at the bottom of the
+# homepage. Generated — do not edit by hand. To refresh, run:
+#
+#   ruby script/update-substack.rb
+#
+# Last fetched 2026-09-22.
+---
+- title: 'AI for Social Good: Beyond Pilot Projects and PR'
+  url: https://aigovlab.substack.com/p/ai-for-social-good-beyond-pilot-projects
+  date: '2026-09-15'
+  summary: Findings from a draft study on AI4SG partnerships between frontier AI labs
+    and nonprofit organizations
+  author: Rob Reich
+- title: A Congress of Robert Reichs
+  url: https://aigovlab.substack.com/p/a-congress-of-robert-reichs
+  date: '2026-07-31'
+  summary: On April 12, 2016, Robert Reich and Rob Reich (with special guest Rob Reich)
+    convened at Stanford University
+  author: Rob Reich
+- title: Democracy and a Third Wave of American Philanthropy?
+  url: https://aigovlab.substack.com/p/democracy-and-a-third-wave-of-american
+  date: '2026-07-30'
+  summary: AI generated philanthropic wealth, and some unsolicited advice for soon-to-be-millionaires
+    at Anthropic and OpenAI
+  author: Rob Reich
