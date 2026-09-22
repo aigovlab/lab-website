@@ -21,10 +21,17 @@ require "rexml/document"
 require "yaml"
 require "cgi"
 require "time"
+require "fileutils"
 
 ROOT = File.expand_path("..", __dir__)
 CONFIG = File.join(ROOT, "_config.yml")
 OUTPUT = File.join(ROOT, "_data", "substack.yml")
+
+# Cover images are downloaded here rather than hotlinked from Substack's CDN,
+# so the homepage stays self-contained and does not hand every visitor off to a
+# third party to draw itself. Files no longer referenced are pruned on each run.
+IMAGE_DIR = File.join(ROOT, "assets", "img", "substack")
+IMAGE_PATH = "/assets/img/substack"
 
 # How many posts the homepage lists. This is the only edit needed to show more
 # or fewer; the template loops over whatever ends up in the file.
@@ -51,9 +58,9 @@ def fetch(uri, redirects_left = 5)
   end
 
   case response
-  when Net::HTTPSuccess then response.body
+  when Net::HTTPSuccess then response
   when Net::HTTPRedirection then fetch(URI.join(uri, response["location"]), redirects_left - 1)
-  else abort "Feed request failed: #{response.code} #{response.message}"
+  else abort "Request for #{uri} failed: #{response.code} #{response.message}"
   end
 end
 
@@ -79,6 +86,65 @@ rescue ArgumentError
   abort "Could not read the publication date #{raw.inspect}"
 end
 
+# Substack's CDN takes Cloudinary-style transforms in the URL, so ask it for a
+# card-sized crop instead of downloading the 2000px original. These are the
+# same numbers Substack's own archive uses for its post thumbnails: a 3:2 crop
+# at twice the displayed size, and `g_auto` so the crop keeps the salient part
+# of the picture. Without `g_auto` a portrait cover gets cut through its middle
+# and lands on the page as an unreadable detail. Covers posted as bare S3 links
+# carry no signature to transform and come down at full size; CSS crops those
+# to the same shape, though only from the center.
+CARD_TRANSFORM = "w_424,h_282,c_fill,g_auto"
+
+# Post URLs end in a slug (.../p/a-congress-of-robert-reichs), which makes a
+# stable, readable filename for that post's cover.
+def slug_for(item)
+  link = plain_text(item.elements["link"]).to_s
+  File.basename(URI.parse(link).path)
+end
+
+def card_sized(url)
+  url.sub(%r{(/image/fetch/\$s_![^!]+!,)}) { "#{Regexp.last_match(1)}#{CARD_TRANSFORM}," }
+end
+
+# The extension comes from what the server actually sends, not from the URL:
+# asking the CDN for a transform returns a JPEG even when the original — whose
+# address is embedded in the request path — was a PNG.
+EXTENSIONS = { "image/jpeg" => ".jpg", "image/png" => ".png", "image/webp" => ".webp",
+               "image/gif" => ".gif" }.freeze
+
+# The post slug names the file, so re-running overwrites the same cover rather
+# than accumulating one copy per fetch.
+def download_cover(url, slug)
+  return nil if url.nil? || url.empty?
+
+  response = fetch(URI.parse(card_sized(url)))
+  extension = EXTENSIONS[response["content-type"].to_s.split(";").first]
+
+  if extension.nil?
+    warn "  skipped the cover for #{slug}: unexpected type #{response["content-type"].inspect}"
+    return nil
+  end
+
+  FileUtils.mkdir_p(IMAGE_DIR)
+  File.binwrite(File.join(IMAGE_DIR, "#{slug}#{extension}"), response.body)
+
+  "#{IMAGE_PATH}/#{slug}#{extension}"
+end
+
+# Covers from posts that have dropped off the list would otherwise sit in the
+# repo forever.
+def prune_covers(keep)
+  return unless Dir.exist?(IMAGE_DIR)
+
+  Dir.children(IMAGE_DIR).each do |file|
+    next if keep.include?("#{IMAGE_PATH}/#{file}")
+
+    File.delete(File.join(IMAGE_DIR, file))
+    puts "  removed stale cover #{file}"
+  end
+end
+
 def posts_from(xml)
   REXML::Document.new(xml).elements.to_a("rss/channel/item").first(POST_COUNT).map do |item|
     {
@@ -87,12 +153,16 @@ def posts_from(xml)
       "url" => plain_text(item.elements["link"]),
       "date" => published_date(item.elements["pubDate"]),
       "summary" => plain_text(item.elements["description"]),
-      "author" => plain_text(item.elements["dc:creator"])
+      "author" => plain_text(item.elements["dc:creator"]),
+      # <enclosure> is where Substack puts the post's cover image. Posts
+      # published without one simply render as a card with no picture.
+      "image" => download_cover(item.elements["enclosure"]&.attributes&.[]("url"), slug_for(item))
     }.reject { |_, value| value.nil? || value.empty? }
   end
 end
 
-posts = posts_from(fetch(feed_url))
+posts = posts_from(fetch(feed_url).body)
+prune_covers(posts.map { |post| post["image"] }.compact)
 
 # Better to keep the last good list on the page than to blank the section out
 # because the feed came back empty.

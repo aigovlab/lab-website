@@ -55,6 +55,7 @@ rather than touching HTML.
 - `assets/css/style.css` — all styling (Stanford cardinal, light/dark)
 - `assets/js/theme.js` — light/dark toggle, mobile menu, scroll highlighting
 - `assets/img/` — member photos and the hero image
+- `assets/img/substack/` — post cover images (generated, see below)
 - `script/update-substack.rb` — refreshes `_data/substack.yml` from the RSS feed
 
 ## Filling in real content
@@ -155,12 +156,18 @@ the Substack RSS feed. To pull in new posts, run:
 ruby script/update-substack.rb
 ```
 
-then commit the changed `_data/substack.yml`. The script needs nothing but
-Ruby — no `bundle`, no gems — and it reads the newsletter address from
-`substack_url` in `_config.yml`.
+then commit the changed `_data/substack.yml` along with anything that changed
+under `assets/img/substack/` — each post's cover image is downloaded there
+rather than hotlinked, and covers for posts that have dropped off the list are
+deleted on each run. The script needs nothing but Ruby — no `bundle`, no gems —
+and it reads the newsletter address from `substack_url` in `_config.yml`. If
+`jekyll serve` is running while you refresh, restart it: its file watcher does
+not notice the cover directory being replaced, and you will keep seeing the old
+images.
 
 This is a manual step on purpose. GitHub Pages builds the site with no network
-access, so the feed cannot be read at build time, and fetching it in the
+access, so the feed cannot be read at build time, Substack blocks automated
+clients such as CI runners from fetching the feed at all, and doing it in the
 browser would put a third-party request on every page load. Re-run it whenever
 you want the homepage to catch up; nothing breaks if it goes a while between
 runs, the list just shows older posts. To list more or fewer than three, change
