@@ -28,18 +28,16 @@
   photo_position: top
   url: https://politicalscience.stanford.edu/people/roberta-leonie-claude-fischli
 
-# NOTE: role below was guessed by whoever built the first version of this site —
-# confirm the correct title within the lab and update it.
 - name: Yasi Khan
   last_name: Khan
-  role: Research Affiliate
+  role: Predoctoral Scholar
   group: members
   photo: yasi-khan.jpg
   url: https://yrkhan.com
 
 - name: Dominic Zappia
   last_name: Zappia
-  role: Research Affiliate
+  role: Predoctoral Scholar
   group: members
   photo: dominic-zappia.jpg
   photo_position: top

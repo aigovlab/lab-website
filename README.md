@@ -16,7 +16,7 @@ own pages.
 | People | `index.html`, the `#people` section |
 | News | `index.html`, the `#news` section |
 | Events | `index.html`, the `#events` section |
-| Lab Research | `research.html` |
+| Research | `research.html` |
 | Teaching | `teaching.html` |
 | Substack | `index.html`, the `#substack` section |
 
@@ -38,7 +38,7 @@ rather than touching HTML.
 
 - `_data/people.yml` — everyone in the People section (name, role, group, photo, bio)
 - `_data/people_groups.yml` — the People subsections and their order
-- `_data/research.yml` — publications on the Lab Research page
+- `_data/research.yml` — publications on the Research page
 - `_data/news.yml` — items in the News section
 - `_data/events.yml` — items in the Events section
 - `_data/courses.yml` — courses on the Teaching page
