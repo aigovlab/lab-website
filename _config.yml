@@ -3,8 +3,8 @@ title: "AI Governance Lab"
 short_title: "AI Governance Lab"
 subtitle: "at Stanford University"
 description: >-
-  The AI Governance Lab at Stanford University — research on how law, policy,
-  and institutions can keep pace with rapidly advancing artificial intelligence.
+  The AI Governance Lab at Stanford University — creating the institutional
+  framework for the AI transition.
 
 # The site is served at the custom domain in CNAME, which is a domain root, so
 # `baseurl` must be empty. If the custom domain is ever removed, Pages falls
