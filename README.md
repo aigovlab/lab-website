@@ -99,6 +99,11 @@ Open `_data/people.yml` and copy an existing block:
 `last_name` is required: each group is sorted by it, so the order of the file
 itself doesn't matter and adding someone never means resorting by hand.
 
+The exception is a group in `_data/people_groups.yml` marked `order: listed`,
+which keeps the order the people appear in `_data/people.yml`. The faculty
+directors use it, since their order is a deliberate choice rather than a
+convention — to reorder them, move the blocks in `_data/people.yml`.
+
 `url` makes the whole card a link to that person's faculty or personal page,
 with a light red highlight on hover. Leave it out and the card renders as plain
 text instead.

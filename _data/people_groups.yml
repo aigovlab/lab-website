@@ -1,7 +1,11 @@
 # Sections on the People page, rendered in this order. A group with nobody in it
 # is skipped entirely, so `alumni` stays invisible until someone is moved into it.
+#
+# Groups are alphabetized by each person's `last_name` unless they set
+# `order: listed`, which keeps them in the order they appear in _data/people.yml.
 - id: faculty
   heading: Faculty Directors
+  order: listed
 - id: members
   heading: Lab Members
 - id: alumni
