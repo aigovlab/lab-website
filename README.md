@@ -171,7 +171,8 @@ Copy a block in `_data/events.yml`. Soonest first. Everything but `date` and
 
 ### Adding a course
 
-Copy a block in `_data/courses.yml`.
+Copy a block in `_data/courses.yml`. `instructors` and `head_cas` are optional
+lists of names; each renders as its own labelled line under the course title.
 
 ### Refreshing the Substack posts
 

@@ -15,15 +15,21 @@ description: >-
     {%- for course in site.data.courses %}
     <li class="course">
       <h2 class="course-title">{{ course.title | escape }}</h2>
-      {%- if course.term or course.instructors %}
+      {%- if course.term %}
+      <p class="course-meta">{{ course.term | escape }}</p>
+      {%- endif %}
+      {%- if course.instructors %}
       <p class="course-meta">
-        {%- if course.term %}{{ course.term | escape }}{% endif -%}
-        {%- if course.term and course.instructors %} — {% endif -%}
-        {%- if course.instructors %}
-          {%- for name in course.instructors -%}
-          {{ name | escape }}{% unless forloop.last %}, {% endunless %}
-          {%- endfor -%}
-        {%- endif -%}
+        <span class="course-role">Instructors:</span>
+        {%- for name in course.instructors %} {{ name | escape }}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      </p>
+      {%- endif %}
+      {%- if course.head_cas %}
+      <p class="course-meta">
+        <span class="course-role">Co-Head CAs:</span>
+        {%- for name in course.head_cas %} {{ name | escape }}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
       </p>
       {%- endif %}
       <p class="course-description">{{ course.description | strip_newlines | escape }}</p>

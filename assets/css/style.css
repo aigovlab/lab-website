@@ -814,6 +814,15 @@ a.person-card:hover .avatar {
   color: var(--ink-soft);
 }
 
+/* Term, instructors, and CAs each get their own line. */
+.course-meta + .course-meta {
+  margin-top: 0.15rem;
+}
+
+.course-role {
+  font-weight: 600;
+}
+
 .course-description {
   margin: 0.6rem 0 0;
 }
