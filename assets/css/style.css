@@ -447,8 +447,9 @@ nav#top-nav {
 }
 
 /* A flex row rather than a grid: group sizes here are small and uneven (two
-   faculty directors, three members), and a grid would stretch a lone person to
-   the full width. Flex keeps every card the same size wherever it lands. */
+   co-directors, three members), and a grid would stretch a lone person to the
+   full width. Flex keeps every card in a group the same size wherever it
+   lands; the width itself is per-group, set below. */
 .people-grid {
   display: flex;
   flex-wrap: wrap;
@@ -462,6 +463,16 @@ nav#top-nav {
   flex: 0 0 200px;
   max-width: 100%;
   text-align: center;
+}
+
+/* The co-directors' role line is a full endowed chair — "McGregor-Girand
+   Professor of Social Ethics of Science and Technology" wraps to four lines in
+   a 200px card and leaves the two cards badly uneven. Widening just this group
+   brings it down to two. `max-width: 100%` above still applies, so on a phone
+   the card shrinks to the screen and the pair stacks one per row rather than
+   overflowing. */
+.people-grid-faculty .person {
+  flex-basis: 300px;
 }
 
 /* The whole card is the link target, not just the name, so the photo is

@@ -57,7 +57,7 @@ title: Home
       {%- unless group.order == "listed" %}{% assign members = members | sort: "last_name" %}{% endunless %}
       {%- if members.size > 0 %}
     <h3 class="group-heading">{{ group.heading }}</h3>
-    <ul class="people-grid">
+    <ul class="people-grid people-grid-{{ group.id }}">
       {%- for person in members %}
       {%- comment -%}
         With a `url` the whole card is one link, so the photo and the name are

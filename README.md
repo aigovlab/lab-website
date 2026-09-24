@@ -105,9 +105,11 @@ doesn't already name a professorship. Rob and Nate are listed plainly because
 doesn't, so Roberta is "Dr. Roberta Fischli". Leave `last_name` unprefixed —
 it's what the sorting uses.
 
-`role` is whatever should appear under the name. For the faculty directors
-that's their professorship rather than "Co-Director" — the group heading
-above the cards already says that, so the card doesn't repeat it.
+`role` is whatever should appear under the name. For the co-directors that's
+their full endowed chair rather than "Co-Director" — the group heading above
+the cards already says that, so the card doesn't repeat it. Their cards are
+wider than the members' to fit a chair title; see `.people-grid-faculty` in
+`assets/css/style.css`.
 
 The exception is a group in `_data/people_groups.yml` marked `order: listed`,
 which keeps the order the people appear in `_data/people.yml`. The faculty
