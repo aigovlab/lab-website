@@ -19,6 +19,15 @@
       }
     })();
   </script>
+  {%- comment -%}
+    One 168px PNG covers every slot that matters: browsers downscale it for the
+    tab, and iOS uses the apple-touch-icon when the site is saved to a home
+    screen. Replacing it means dropping a new file at the same path — the cache
+    buster on the stylesheet does not apply here, so bump the filename if a
+    change needs to land immediately.
+  {%- endcomment -%}
+  <link rel="icon" type="image/png" href="{{ '/assets/img/favicon.png' | relative_url }}" />
+  <link rel="apple-touch-icon" href="{{ '/assets/img/favicon.png' | relative_url }}" />
   <title>{% if page.nav == 'home' %}{{ site.title }} · {{ site.subtitle }}{% else %}{{ page.title }} — {{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ page.description | default: site.description | strip_newlines | strip }}" />
   {%- comment -%}

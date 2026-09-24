@@ -49,12 +49,12 @@ rather than touching HTML.
 **Edit these to change how it looks:**
 
 - `_layouts/default.html` — the page shell every page renders through
-- `_includes/head.html` — `<head>`, fonts, the pre-paint theme script
+- `_includes/head.html` — `<head>`, fonts, favicon, the pre-paint theme script
 - `_includes/nav.html` — nav bar, mobile menu, light/dark toggle
 - `_includes/footer.html` — footer
 - `assets/css/style.css` — all styling (Stanford cardinal, light/dark)
 - `assets/js/theme.js` — light/dark toggle, mobile menu, scroll highlighting
-- `assets/img/` — member photos and the hero image
+- `assets/img/` — member photos, the hero image, and the favicon
 - `assets/img/substack/` — post cover images (generated, see below)
 - `script/update-substack.rb` — refreshes `_data/substack.yml` from the RSS feed
 
@@ -74,6 +74,14 @@ A dark scrim goes over the photo automatically, weighted toward the middle
 where the lab name sits, so white type stays readable over bright glass or
 sky. A photo that is very bright straight through the middle will still fight
 the text.
+
+### The favicon
+
+The tab icon is `assets/img/favicon.png`, a 168px square, linked from
+`_includes/head.html` as both the favicon and the iOS home-screen icon. To
+change it, replace that file. Browsers cache favicons hard, so if a new one
+has to show up right away, rename the file and update the two `<link>` tags in
+`_includes/head.html` to match.
 
 ### Adding or editing a person
 

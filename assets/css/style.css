@@ -446,8 +446,8 @@ nav#top-nav {
   margin-top: 0;
 }
 
-/* A flex row rather than a grid: group sizes here are small and uneven (one
-   faculty director, four members), and a grid would stretch a lone person to
+/* A flex row rather than a grid: group sizes here are small and uneven (two
+   faculty directors, three members), and a grid would stretch a lone person to
    the full width. Flex keeps every card the same size wherever it lands. */
 .people-grid {
   display: flex;
