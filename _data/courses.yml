@@ -4,6 +4,7 @@
 #   term        when it runs, e.g. "Autumn 2026" — optional
 #   instructors list of names — optional
 #   head_cas    list of co-head CAs — optional
+#   cas         list of course assistants — optional
 #   description one or two plain sentences
 #   url         the course site
 #   link_text   the link's wording; defaults to "Course site"
@@ -16,6 +17,8 @@
   head_cas:
     - "Dr. Roberta Fischli"
     - "Dominic Zappia"
+  cas:
+    - "Yasi Khan"
   description: >-
     A course on the legal, policy, and institutional challenges of governing
     AI systems.

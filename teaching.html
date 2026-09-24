@@ -32,6 +32,13 @@ description: >-
         {%- endfor -%}
       </p>
       {%- endif %}
+      {%- if course.cas %}
+      <p class="course-meta">
+        <span class="course-role">CAs:</span>
+        {%- for name in course.cas %} {{ name | escape }}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      </p>
+      {%- endif %}
       <p class="course-description">{{ course.description | strip_newlines | escape }}</p>
       <p class="course-link">
         <a href="{{ course.url }}" target="_blank" rel="noopener">{{ course.link_text | default: "Course site" | escape }} &raquo;</a>
