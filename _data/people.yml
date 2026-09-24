@@ -8,7 +8,7 @@
 #                  by this, so it is required even when it looks redundant
 #   role           title shown under the name. For the faculty directors this
 #                  is their professorship, not their lab position — the
-#                  "Faculty Directors" group heading already says that.
+#                  "Co-Directors" group heading already says that.
 #   group          which section they appear in; see _data/people_groups.yml
 #                  (faculty | members | alumni)
 #   photo          filename inside assets/img/ — omit for a blank avatar circle

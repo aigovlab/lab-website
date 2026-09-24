@@ -106,7 +106,7 @@ doesn't, so Roberta is "Dr. Roberta Fischli". Leave `last_name` unprefixed —
 it's what the sorting uses.
 
 `role` is whatever should appear under the name. For the faculty directors
-that's their professorship rather than "Faculty Director" — the group heading
+that's their professorship rather than "Co-Director" — the group heading
 above the cards already says that, so the card doesn't repeat it.
 
 The exception is a group in `_data/people_groups.yml` marked `order: listed`,
