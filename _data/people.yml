@@ -4,7 +4,9 @@
 #   name           displayed name
 #   last_name      the part of the name to alphabetize by; each group is sorted
 #                  by this, so it is required even when it looks redundant
-#   role           title shown under the name
+#   role           title shown under the name. For the faculty directors this
+#                  is their professorship, not their lab position — the
+#                  "Faculty Directors" group heading already says that.
 #   group          which section they appear in; see _data/people_groups.yml
 #                  (faculty | members | alumni)
 #   photo          filename inside assets/img/ — omit for a blank avatar circle
@@ -15,14 +17,14 @@
 
 - name: Rob Reich
   last_name: Reich
-  role: Faculty Director
+  role: Professor of Political Science
   group: faculty
   photo: rob-reich.jpg
   url: https://politicalscience.stanford.edu/people/rob-reich
 
 - name: Nate Persily
   last_name: Persily
-  role: Faculty Director
+  role: Professor of Law
   group: faculty
   photo: nate-persily.jpg
   url: https://law.stanford.edu/nathaniel-persily/

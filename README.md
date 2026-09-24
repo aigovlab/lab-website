@@ -99,6 +99,10 @@ Open `_data/people.yml` and copy an existing block:
 `last_name` is required: each group is sorted by it, so the order of the file
 itself doesn't matter and adding someone never means resorting by hand.
 
+`role` is whatever should appear under the name. For the faculty directors
+that's their professorship rather than "Faculty Director" — the group heading
+above the cards already says that, so the card doesn't repeat it.
+
 The exception is a group in `_data/people_groups.yml` marked `order: listed`,
 which keeps the order the people appear in `_data/people.yml`. The faculty
 directors use it, since their order is a deliberate choice rather than a
