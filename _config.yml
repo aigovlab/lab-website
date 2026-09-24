@@ -6,12 +6,14 @@ description: >-
   The AI Governance Lab at Stanford University — research on how law, policy,
   and institutions can keep pace with rapidly advancing artificial intelligence.
 
-# GitHub Pages serves this repo from a project path, not a domain root, so
-# `baseurl` must stay the repo name. Every internal link and asset goes through
-# the `relative_url` filter, which prepends it — drop that and the CSS 404s in
-# production while still looking fine locally.
-url: "https://stanford-developers.github.io"
-baseurl: "/aigovlab"
+# The site is served at the custom domain in CNAME, which is a domain root, so
+# `baseurl` must be empty. If the custom domain is ever removed, Pages falls
+# back to the project path and this has to become "/aigovlab" (the repo name) —
+# every internal link and asset goes through the `relative_url` filter, which
+# prepends it, so a wrong value 404s the CSS in production while still looking
+# fine locally.
+url: "https://aigovlab.stanford.edu"
+baseurl: ""
 
 # Referenced from the footer and the Substack section; change it in one place.
 substack_url: "https://aigovlab.substack.com/"

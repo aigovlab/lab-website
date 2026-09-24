@@ -199,8 +199,9 @@ Then, to preview with live reload on every save:
 bundle exec jekyll serve
 ```
 
-and open http://localhost:4000/aigovlab/ (the `/aigovlab/` path matters —
-see the `baseurl` note in `_config.yml`).
+and open http://localhost:4000/ — `baseurl` is empty because the site is served
+at a custom domain root, so there is no path prefix (see the `baseurl` note in
+`_config.yml`).
 
 ## Design notes
 
@@ -244,7 +245,12 @@ The site is deployed with GitHub Pages from the `main` branch, root folder
 (Settings → Pages). Every push to `main` republishes it automatically; it
 usually goes live within a minute or two.
 
-Live URL: https://stanford-developers.github.io/aigovlab/
+Live URL: https://aigovlab.stanford.edu/
+
+The custom domain is set by the `CNAME` file at the repo root (mirrored in
+Settings → Pages). `stanford-developers.github.io/aigovlab` redirects to it.
+Deleting `CNAME` would move the site back to that project path and require
+setting `baseurl` in `_config.yml` back to `/aigovlab`.
 
 GitHub Pages builds the site with Jekyll natively — there is no GitHub Actions
 workflow to maintain. The `Gemfile` pins the `github-pages` gem so a local
