@@ -5,6 +5,10 @@
 #   instructors list of names — optional
 #   head_cas    list of co-head CAs — optional
 #   cas         list of course assistants — optional
+#
+# Names on the instructors, head_cas, and cas lines are bolded automatically
+# when they match a `name` in _data/people.yml, so spell lab members exactly as
+# they appear there.
 #   description one or two plain sentences
 #   url         the course site
 #   link_text   the link's wording; defaults to "Course site"
@@ -18,7 +22,11 @@
     - "Dr. Roberta Fischli"
     - "Dominic Zappia"
   cas:
+    - "Yifei Cheng"
+    - "Bruria Friedman-Feldman"
+    - "Thay Graciano"
     - "Yasi Khan"
+    - "Tia Vasudeva"
   description: >-
     A course on the legal, policy, and institutional challenges of governing
     AI systems.

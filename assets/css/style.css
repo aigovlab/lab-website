@@ -823,6 +823,12 @@ a.person-card:hover .avatar {
   font-weight: 600;
 }
 
+/* Lab members among the teaching staff, picked out from the wider team. */
+.course-lab-member {
+  font-weight: 600;
+  color: var(--ink);
+}
+
 .course-description {
   margin: 0.6rem 0 0;
 }

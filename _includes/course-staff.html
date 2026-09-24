@@ -1,0 +1,18 @@
+{%- comment -%}
+  One labelled line of course staff on the Teaching page.
+
+  Names that match someone in _data/people.yml are picked out in bold, so lab
+  members stand out from the rest of the teaching team without anyone having to
+  flag them by hand — the list follows People as it changes.
+
+    label  the role, e.g. "Instructors"
+    names  list of displayed names, in the order they should read
+{%- endcomment -%}
+{%- if include.names -%}
+{%- assign lab_names = site.data.people | map: "name" -%}
+<p class="course-meta">
+  <span class="course-role">{{ include.label | escape }}:</span>
+  {%- for name in include.names %} {% if lab_names contains name %}<strong class="course-lab-member">{{ name | escape }}</strong>{% else %}{{ name | escape }}{% endif %}{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+</p>
+{%- endif -%}

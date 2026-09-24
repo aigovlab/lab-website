@@ -173,7 +173,9 @@ Copy a block in `_data/events.yml`. Soonest first. Everything but `date` and
 
 Copy a block in `_data/courses.yml`. `instructors`, `head_cas`, and `cas` are
 optional lists of names; each renders as its own labelled line under the course
-title.
+title. A name that matches someone in `_data/people.yml` is bolded, so lab
+members stand out from the rest of the teaching team — spell them exactly as
+People does.
 
 ### Refreshing the Substack posts
 
