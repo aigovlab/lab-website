@@ -199,7 +199,7 @@ Then, to preview with live reload on every save:
 bundle exec jekyll serve
 ```
 
-and open http://localhost:4000/lab-website/ (the `/lab-website/` path matters —
+and open http://localhost:4000/aigovlab/ (the `/aigovlab/` path matters —
 see the `baseurl` note in `_config.yml`).
 
 ## Design notes
@@ -217,8 +217,10 @@ see the `baseurl` note in `_config.yml`).
 
 ## Repository
 
-This site lives at [`aigovlab/lab-website`](https://github.com/aigovlab/lab-website)
-under the AI Governance Lab GitHub organization.
+This site lives at [`stanford-developers/aigovlab`](https://github.com/stanford-developers/aigovlab)
+under the Stanford Developers GitHub organization. It moved there from
+`aigovlab/lab-website`; GitHub redirects the old URL, but the remote here and
+the `url`/`baseurl` in `_config.yml` point at the new location.
 
 It was seeded from `dazzap9/ai-governance-lab`, which is kept as an `upstream`
 remote (fetch-only) in case we want to pull in changes from that copy:
@@ -242,7 +244,7 @@ The site is deployed with GitHub Pages from the `main` branch, root folder
 (Settings → Pages). Every push to `main` republishes it automatically; it
 usually goes live within a minute or two.
 
-Live URL: https://aigovlab.github.io/lab-website/
+Live URL: https://stanford-developers.github.io/aigovlab/
 
 GitHub Pages builds the site with Jekyll natively — there is no GitHub Actions
 workflow to maintain. The `Gemfile` pins the `github-pages` gem so a local

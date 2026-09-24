@@ -39,7 +39,7 @@ POST_COUNT = 3
 
 # Substack serves the feed to a request that identifies itself; the bare
 # default Ruby user agent gets turned away.
-USER_AGENT = "aigovlab-website-feed-fetcher (+https://aigovlab.github.io/lab-website)"
+USER_AGENT = "aigovlab-website-feed-fetcher (+https://stanford-developers.github.io/aigovlab)"
 
 # The newsletter URL lives in _config.yml so the site and this script cannot
 # drift apart. YAML.load_file is enough — the config is plain scalars.

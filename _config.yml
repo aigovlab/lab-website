@@ -10,8 +10,8 @@ description: >-
 # `baseurl` must stay the repo name. Every internal link and asset goes through
 # the `relative_url` filter, which prepends it — drop that and the CSS 404s in
 # production while still looking fine locally.
-url: "https://aigovlab.github.io"
-baseurl: "/lab-website"
+url: "https://stanford-developers.github.io"
+baseurl: "/aigovlab"
 
 # Referenced from the footer and the Substack section; change it in one place.
 substack_url: "https://aigovlab.substack.com/"
