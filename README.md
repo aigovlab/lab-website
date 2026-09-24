@@ -145,12 +145,14 @@ button; leave out the ones that don't apply.
 
 ### Adding a news item
 
-Copy a block in `_data/news.yml`. Newest first.
+Copy a block in `_data/news.yml`. Newest first. `summary` is optional — use it
+to say why the item matters to the lab when the headline doesn't mention us.
 
 ```yaml
 - date: 2026-08-14
   outlet: "The New York Times"
   title: "The headline of the story"
+  summary: "What the story means for the lab."
   url: "https://example.com/story"
 ```
 
