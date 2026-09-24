@@ -1,7 +1,9 @@
 # Everyone in the People section of the homepage. To add someone, copy a block
 # and fill it in — no HTML required.
 #
-#   name           displayed name
+#   name           displayed name. Prefix "Dr." for a doctorate holder whose
+#                  `role` does not already name a professorship — the faculty
+#                  directors' titles carry the credential, a postdoc's do not.
 #   last_name      the part of the name to alphabetize by; each group is sorted
 #                  by this, so it is required even when it looks redundant
 #   role           title shown under the name. For the faculty directors this
@@ -29,7 +31,7 @@
   photo: nate-persily.jpg
   url: https://law.stanford.edu/nathaniel-persily/
 
-- name: Roberta Fischli
+- name: Dr. Roberta Fischli
   last_name: Fischli
   role: Postdoctoral Scholar
   group: members
