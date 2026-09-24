@@ -2,7 +2,7 @@
 # homepage.
 #
 # Add one block per event, soonest first — this file's order is the section's
-# order. While the file is empty the section shows a "nothing scheduled" message.
+# order. While the file is empty the section shows a "check back soon" message.
 #
 #   date      YYYY-MM-DD
 #   title     what the event is called
